@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.0",
     "html-webpack-plugin": "^2.30.1",
     "material-ui": "next",
     "npm": "^5.5.1",
