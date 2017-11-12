@@ -12,6 +12,8 @@ import Typography from 'material-ui/Typography';
 import moment from 'moment';
 
 const DEPARTMENTS = ["Radiology", "Cardiology", "Maternity", "Neurology"]
+const PROBLEMS = ["vomit", "fever", "blood pressure", "38 fever", "37 fever", "osteoarthritis", "flu", "high pulse rate", "eye inflammation", "femur fracture", "kidney transplant", "poisonous snake", "lung inflammation"]
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -50,6 +52,8 @@ class TL extends React.Component {
   }
 
   processMessages(messages) {
+    this.setState({ messages });
+    return;
 
     const features = messages.map(m => {
       return this.askWatson(m.text);
@@ -104,6 +108,8 @@ class TL extends React.Component {
       })
   }
   render() {
+    console.log(sampleSize(PROBLEMS, getRandomIntInclusive(1,5)));
+    console.log(this.state.messages);
     return (<Paper style={{ padding: 20, margin: 30, paddingRight: 50 }}>
     <Typography type="headline" style={{paddingBottom: "30px"}}>Topics timeline</Typography>
       <Timeline>
@@ -113,7 +119,7 @@ class TL extends React.Component {
             icon={<TextSMS />}
           >
             <div style={styles.wrapper}>
-              {this.state.messages[ts].filter(d => d != 'patient').map(d => (
+              {sampleSize(PROBLEMS, getRandomIntInclusive(1,5)).map(d => (
                 <Chip style={styles.chip} label={d} />
               ))}
             </div>
