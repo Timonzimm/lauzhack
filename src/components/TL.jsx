@@ -108,10 +108,8 @@ class TL extends React.Component {
       })
   }
   render() {
-    console.log(sampleSize(PROBLEMS, getRandomIntInclusive(1,5)));
-    console.log(this.state.messages);
     return (<Paper style={{ padding: 20, margin: 30, paddingRight: 50 }}>
-    <Typography type="headline" style={{paddingBottom: "30px"}}>Topics timeline</Typography>
+    <Typography type="headline" style={{paddingBottom: "30px"}}>Patient timeline</Typography>
       <Timeline>
         {Object.keys(this.state.messages).map(ts => (
           <TimelineEvent title={sampleSize(DEPARTMENTS, getRandomIntInclusive(1,3)).join(", ")}
