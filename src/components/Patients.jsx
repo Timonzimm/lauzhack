@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
 
 import moment from 'moment'
 
@@ -21,6 +20,7 @@ import Avatar from 'material-ui/Avatar';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 
 import axios from 'axios';
+
 
 class Patients extends React.Component {
   constructor(props) {

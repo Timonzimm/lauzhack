@@ -45,10 +45,10 @@ const Dashboard = (props) => <Grid container xs={8}>
     <Board data={data_board} draggable style={{ backgroundColor: "transparent", height: "auto", width: "100%" }} />
   </Grid>
   <Grid item xs={4}>
-    <Pulse />
+    <Pulse roomId={props.roomId} />
   </Grid>
   <Grid item xs={12}>
-    <TempPressure />
+    <TempPressure roomId={props.roomId} />
   </Grid>
 </Grid>
 

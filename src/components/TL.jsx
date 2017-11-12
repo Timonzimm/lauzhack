@@ -5,11 +5,18 @@ import Chip from 'material-ui/Chip';
 import axios from 'axios';
 import { Timeline, TimelineEvent } from 'react-event-timeline'
 import TextSMS from 'material-ui-icons/Textsms';
-import { groupBy, mapKeys, mapValues, forIn, flatten } from 'lodash';
+import { groupBy, mapKeys, mapValues, forIn, flatten, sampleSize } from 'lodash';
 import Promise from 'bluebird';
 import Typography from 'material-ui/Typography';
 
+import moment from 'moment';
 
+const DEPARTMENTS = ["Radiology", "Cardiology", "Maternity", "Neurology"]
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
 const styles = {
   chip: {
     margin: "4px",
@@ -98,15 +105,15 @@ class TL extends React.Component {
   }
   render() {
     return (<Paper style={{ padding: 20, margin: 30, paddingRight: 50 }}>
-    <Typography type="headline" style={{paddingBottom: "30px"}}>Timeline</Typography>
+    <Typography type="headline" style={{paddingBottom: "30px"}}>Topics timeline</Typography>
       <Timeline>
         {Object.keys(this.state.messages).map(ts => (
-          <TimelineEvent title={this.state.messages[ts].length}
-            createdAt={ts}
+          <TimelineEvent title={sampleSize(DEPARTMENTS, getRandomIntInclusive(1,3)).join(", ")}
+            createdAt={moment(ts*60000).format('DD MMM. YYYY')}
             icon={<TextSMS />}
           >
             <div style={styles.wrapper}>
-              {this.state.messages[ts].map(d => (
+              {this.state.messages[ts].filter(d => d != 'patient').map(d => (
                 <Chip style={styles.chip} label={d} />
               ))}
             </div>

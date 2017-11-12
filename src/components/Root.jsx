@@ -5,7 +5,6 @@ import Typography from 'material-ui/Typography';
 
 import Dashboard from 'material-ui-icons/Dashboard';
 import Forum from 'material-ui-icons/Forum';
-import AttachFile from 'material-ui-icons/AttachFile';
 
 import { Route } from 'react-router-dom'
 
@@ -41,7 +40,6 @@ class Root extends React.Component {
               >
                 <Tab icon={<Dashboard />} label="Dashboard" />
                 <Tab icon={<Forum />} label="Notepad" />
-                <Tab icon={<AttachFile />} label="Notes" />
               </Tabs>
             )} />
         </Grid>
